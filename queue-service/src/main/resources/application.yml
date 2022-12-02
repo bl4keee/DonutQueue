@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+client:
+  minClientIdThreshold: 1
+  maxClientIdThreshold: 20000
+
+order:
+  maxCartQuantity: 50
+  minutesBetweenEveryPickup: 5.0
+  secondsBetweenEveryPickup: 300.0
+
+springdoc:
+  swagger-ui.path: /openapi/swagger-ui.html
+  api-docs.path: /openapi/v3/api-docs
+  packagesToScan: com.donutqueue.queueservice
+  pathsToMatch: /**
+
+api:
+  common:
+    version: 1.0.0
+    title: DonutQueue API
+    description: Description of the DonutQueue's API
+
+  customer:
+    add-order:
+      summary: Returns added order to the queue
+
+    cancel-order:
+      summary: Removes an order from the queue
+
+    check-order:
+      summary: Returns extended version of an order from the queue with position and approx. wait time
+
+  employee:
+    delivery:
+      summary: Return a list of orders for the next delivery
+
+  manager:
+    orders:
+      summary: Returns a list of extended orders with position and approx. wait time
+
+
+---
+spring.config.activate.on-profile: docker
+
+server.port: 8080

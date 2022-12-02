@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  queue-service:
+    build: queue-service
+    mem_limit: 512m
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
